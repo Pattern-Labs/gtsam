@@ -23,7 +23,7 @@ if(GTSAM_UNSTABLE_AVAILABLE)
 endif()
 
 if(NOT MSVC AND NOT XCODE_VERSION)
-    print_enabled_config(${GTSAM_BUILD_WITH_MARCH_NATIVE}     "Build for native architecture  ")
+    print_config("Architecture" "${GTSAM_BUILD_MARCH}")
     print_config("Build type" "${CMAKE_BUILD_TYPE}")
     print_config("C compilation flags" "${CMAKE_C_FLAGS} ${CMAKE_C_FLAGS_${CMAKE_BUILD_TYPE_UPPER}}")
     print_config("C++ compilation flags" "${CMAKE_CXX_FLAGS} ${CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE_UPPER}}")

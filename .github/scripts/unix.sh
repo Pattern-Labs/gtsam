@@ -35,7 +35,7 @@ function configure()
     export CXX=g++-$GCC_VERSION
   fi
 
-  # GTSAM_BUILD_WITH_MARCH_NATIVE=OFF: to avoid crashes in builder VMs
+  # GTSAM_BUILD_WITH_MARCH_NATIVE=unspecified: to avoid crashes in builder VMs
   # CMAKE_CXX_FLAGS="-w": Suppress warnings to avoid IO latency in CI logs
   export CMAKE_GENERATOR=Ninja
   cmake $GITHUB_WORKSPACE \
@@ -52,7 +52,6 @@ function configure()
       -DGTSAM_POSE3_EXPMAP=${GTSAM_POSE3_EXPMAP:-ON} \
       -DGTSAM_USE_SYSTEM_EIGEN=${GTSAM_USE_SYSTEM_EIGEN:-OFF} \
       -DGTSAM_USE_SYSTEM_METIS=${GTSAM_USE_SYSTEM_METIS:-OFF} \
-      -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF \
       -DGTSAM_SINGLE_TEST_EXE=OFF
 }
 
