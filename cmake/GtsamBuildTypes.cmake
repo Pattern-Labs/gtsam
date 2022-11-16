@@ -186,17 +186,12 @@ if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
 endif()
 
 if (NOT MSVC)
-  option(GTSAM_BUILD_WITH_MARCH_NATIVE  "Enable/Disable building with all instructions supported by native architecture (binary may not be portable!)" ON)
-  set(GTSAM_BUILD_NONNATIVE_MARCH "" CACHE STRING
-      "Build with instructions supported by the provided architecture (only when GTSAM_BUILD_WITH_MARCH_NATIVE=OFF).")
-  if(GTSAM_BUILD_WITH_MARCH_NATIVE)
-    # Add as public flag so all dependant projects also use it, as required
-    # by Eigen to avid crashes due to SIMD vectorization:
-    list_append_cache(GTSAM_COMPILE_OPTIONS_PUBLIC "-march=native")
-  else()
-    if(GTSAM_BUILD_NONNATIVE_MARCH)
-      list_append_cache(GTSAM_COMPILE_OPTIONS_PUBLIC "-march=${GTSAM_BUILD_NONNATIVE_MARCH}")
-    endif()
+  set(GTSAM_BUILD_MARCH "native" CACHE STRING
+      "Build with instructions supported by the provided architecture.")
+  # Add as public flag so all dependant projects also use it, as required
+  # by Eigen to avid crashes due to SIMD vectorization:
+  if(GTSAM_BUILD_MARCH)
+    list_append_cache(GTSAM_COMPILE_OPTIONS_PUBLIC "-march=${GTSAM_BUILD_MARCH}")
   endif()
 endif()
 

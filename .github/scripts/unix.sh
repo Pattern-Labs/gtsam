@@ -57,7 +57,7 @@ function configure()
     export CXX=g++-$GCC_VERSION
   fi
 
-  # GTSAM_BUILD_WITH_MARCH_NATIVE=OFF: to avoid crashes in builder VMs
+  # GTSAM_BUILD_WITH_MARCH=unspecified: to avoid crashes in builder VMs
   cmake $SOURCE_DIR \
       -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE:-Debug} \
       -DGTSAM_BUILD_TESTS=${GTSAM_BUILD_TESTS:-OFF} \
@@ -70,7 +70,6 @@ function configure()
       -DGTSAM_POSE3_EXPMAP=${GTSAM_POSE3_EXPMAP:-ON} \
       -DGTSAM_USE_SYSTEM_EIGEN=${GTSAM_USE_SYSTEM_EIGEN:-OFF} \
       -DGTSAM_USE_SYSTEM_METIS=${GTSAM_USE_SYSTEM_METIS:-OFF} \
-      -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF \
       -DBOOST_ROOT=$BOOST_ROOT \
       -DBoost_NO_SYSTEM_PATHS=ON \
       -DBoost_ARCHITECTURE=-x64
