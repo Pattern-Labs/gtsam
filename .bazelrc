@@ -1,0 +1,10 @@
+build:dbg -c dbg
+build:opt -c opt
+build:relwithdebinfo -c opt --copt -g --cxxopt -g --copt -z --cxxopt -z
+common --experimental_enable_bzlmod
+common --registry="https://raw.githubusercontent.com/Pattern-Labs/index-registry/main/"
+common --registry="https://raw.githubusercontent.com/bazelbuild/bazel-central-registry/main/"
+common --color=yes
+
+build --cxxopt="-std=c++17"
+build --host_cxxopt="-std=c++17"
